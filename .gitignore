@@ -16,3 +16,4 @@ ENV/
 output/
 *.csv
 *.json
+!assets/*.json
