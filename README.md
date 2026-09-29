@@ -1,5 +1,6 @@
 # 🗺️ Google Maps Lead Generation & Website Opportunity Skill
 
+[![npm version](https://img.shields.io/npm/v/google-maps-lead-generation.svg?style=for-the-badge&color=CB3837&logo=npm)](https://www.npmjs.com/package/google-maps-lead-generation)
 [![Agent Skills Compliant](https://img.shields.io/badge/Agent_Skills-Specification_Compliant-7C3AED.svg?style=for-the-badge&logo=anthropic)](https://agentskills.io)
 [![ScrapeGraphAI](https://img.shields.io/badge/Core_Engine-ScrapeGraphAI-FF6B6B.svg?style=for-the-badge&logo=python)](https://github.com/ScrapeGraphAI/Scrapegraph-ai)
 [![Python Version](https://img.shields.io/badge/Python-3.10+-3776AB.svg?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
@@ -10,6 +11,27 @@
 > Automatically detects businesses with **no website**, **social-only presence**, or **broken/unreachable websites**, generating high-intent outreach leads for digital agencies, web developers, and B2B marketers.
 
 ---
+
+## ⚡ Quick Install via NPX
+
+Install the skill and AI IDE adapters into your project with a single command:
+
+```bash
+npx google-maps-lead-generation init
+```
+
+Or install non-interactively across all platforms at once:
+
+```bash
+npx google-maps-lead-generation init -y
+```
+
+| Command | Action |
+|---|---|
+| `npx google-maps-lead-generation` | Launch interactive platform installer |
+| `npx google-maps-lead-generation init -y` | Auto-install adapters for all IDEs & CLIs |
+| `npx google-maps-lead-generation prompt` | Export standalone prompt to `./lead-gen-prompt.md` |
+| `npx google-maps-lead-generation --help` | View all CLI flags |
 
 ## ⚡ Key Highlights
 

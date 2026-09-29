@@ -1,0 +1,61 @@
+{
+  "name": "google-maps-lead-generation",
+  "version": "1.0.0",
+  "description": "Google Maps lead generation & website opportunity discovery skill powered by ScrapeGraphAI for all AI coding agents.",
+  "main": "bin/cli.js",
+  "bin": {
+    "google-maps-lead-generation": "bin/cli.js"
+  },
+  "keywords": [
+    "ai",
+    "agent",
+    "agent-skills",
+    "scrapegraphai",
+    "lead-generation",
+    "google-maps",
+    "cursor",
+    "cursorrules",
+    "copilot",
+    "claude",
+    "antigravity",
+    "windsurf"
+  ],
+  "author": "Salman Ahmad (ahmmikun)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahmmikun/google-maps-lead-generation.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ahmmikun/google-maps-lead-generation/issues"
+  },
+  "homepage": "https://github.com/ahmmikun/google-maps-lead-generation#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "bin",
+    "SKILL.md",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "GEMINI.md",
+    "README.md",
+    "LICENSE",
+    "requirements.txt",
+    ".cursorrules",
+    ".windsurfrules",
+    ".clinerules",
+    ".cursor",
+    ".github",
+    "adapters",
+    "references",
+    "assets"
+  ],
+  "scripts": {
+    "test": "node bin/cli.js --help",
+    "prepublishOnly": "npm test"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

@@ -11,9 +11,11 @@ __pycache__/
 env/
 venv/
 ENV/
+node_modules/
 
 # Output data
 output/
 *.csv
 *.json
+!package.json
 !assets/*.json
