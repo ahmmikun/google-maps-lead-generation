@@ -1,42 +1,84 @@
+<div align="center">
+
 # 🗺️ Google Maps Lead Generation & Website Opportunity Skill
 
+### Autonomous Lead Discovery, Geographic Partitioning & Website Opportunity Engine for AI Coding Agents
+
 [![npm version](https://img.shields.io/npm/v/google-maps-lead-generation.svg?style=for-the-badge&color=CB3837&logo=npm)](https://www.npmjs.com/package/google-maps-lead-generation)
+[![npm downloads](https://img.shields.io/npm/dt/google-maps-lead-generation.svg?style=for-the-badge&color=2563EB&logo=npm)](https://www.npmjs.com/package/google-maps-lead-generation)
 [![Agent Skills Compliant](https://img.shields.io/badge/Agent_Skills-Specification_Compliant-7C3AED.svg?style=for-the-badge&logo=anthropic)](https://agentskills.io)
 [![ScrapeGraphAI](https://img.shields.io/badge/Core_Engine-ScrapeGraphAI-FF6B6B.svg?style=for-the-badge&logo=python)](https://github.com/ScrapeGraphAI/Scrapegraph-ai)
 [![Python Version](https://img.shields.io/badge/Python-3.10+-3776AB.svg?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
-> A production-grade **[Agent Skill](https://agentskills.io)** that systematically discovers, scrapes, deduplicates, and verifies business leads across target geographic territories using **[ScrapeGraphAI](https://github.com/ScrapeGraphAI/Scrapegraph-ai)**. 
-> 
-> Automatically detects businesses with **no website**, **social-only presence**, or **broken/unreachable websites**, generating high-intent outreach leads for digital agencies, web developers, and B2B marketers.
+<br/>
 
----
+Specialized for **Claude Code** · **Google Antigravity** · **Cursor IDE** · **Windsurf** · **VS Code Copilot** · **Gemini CLI**
 
-## ⚡ Quick Install via NPX
-
-Install the skill and AI IDE adapters into your project with a single command:
+<br/>
 
 ```bash
 npx google-maps-lead-generation init
 ```
 
-Or install non-interactively across all platforms at once:
+</div>
+
+---
+
+## ⚡ What This Does
+
+A production-grade **[Agent Skill](https://agentskills.io)** that systematically discovers, extracts, deduplicates, and verifies business leads across target geographic territories on Google Maps using **[ScrapeGraphAI](https://github.com/ScrapeGraphAI/Scrapegraph-ai)**.
+
+Automatically categorizes and isolates high-intent B2B outreach prospects:
+* 🚫 **No Website Listed**: Businesses with zero web presence on Google Maps.
+* 📱 **Social Profile Only**: Businesses linking only to Facebook, Instagram, TikTok, LinkedIn, or WhatsApp.
+* 📂 **Directory Listing Only**: Businesses relying solely on portals and aggregators (oladoc, marham, yelp).
+* 💥 **Broken / Unreachable Websites**: Listed websites failing HTTP health checks (DNS failure, HTTP 404/500, SSL expired, timeout).
+
+---
+
+## ⚡ Quick Install via NPX
+
+Run one command in the root of any workspace or project:
 
 ```bash
-npx google-maps-lead-generation init -y
+npx google-maps-lead-generation init
 ```
 
+The interactive installer guides you through configuring your AI editor or platform:
+
+```text
+Google Maps Lead Generation & Website Opportunity Skill v1.0.0
+Powered by ScrapeGraphAI · Compatible with all Agentic AI IDEs & CLIs
+
+Select your AI platform or IDE: (Use ↑/↓ arrows, Enter to select, or press 1-7)
+
+  ● [1] All Platforms (Claude, Antigravity, Cursor, Windsurf, Copilot, Gemini) - [Recommended]
+    [2] Claude Code CLI (CLAUDE.md)
+    [3] Google Antigravity & Gemini CLI (AGENTS.md & GEMINI.md)
+    [4] Cursor IDE (.cursorrules & .cursor/rules/*.mdc)
+    [5] Windsurf IDE (.windsurfrules)
+    [6] VS Code / GitHub Copilot (.github/copilot-instructions.md)
+    [7] Export Standalone Prompt for Web LLMs (ChatGPT, Claude.ai)
+```
+
+### CLI Command Options
+
 | Command | Action |
-|---|---|
+|:---|:---|
 | `npx google-maps-lead-generation` | Launch interactive platform installer |
-| `npx google-maps-lead-generation init -y` | Auto-install adapters for all IDEs & CLIs |
+| `npx google-maps-lead-generation init` | Launch interactive setup wizard |
+| `npx google-maps-lead-generation init -y` | Auto-install adapters for all IDEs silently (CI-ready) |
 | `npx google-maps-lead-generation prompt` | Export standalone prompt to `./lead-gen-prompt.md` |
-| `npx google-maps-lead-generation --help` | View all CLI flags |
+| `npx google-maps-lead-generation -v` | Display version number |
+| `npx google-maps-lead-generation -h` | Display help message |
 
-## ⚡ Key Highlights
+---
 
-* 🧠 **ScrapeGraphAI Core**: Powered by LLM graph pipelines (`SmartScraperGraph`, `ScriptCreatorGraph`, `SearchGraph`). No brittle, hardcoded scrapers—automation scripts are generated dynamically on demand!
-* 🏙️ **Systematic Geographic Decomposition**: Overcomes Google Maps feed truncation caps by partitioning cities into administrative sectors, towns, and commercial districts.
+## 🌟 Key Features
+
+* 🧠 **ScrapeGraphAI Core Engine**: Powered by LLM graph pipelines (`SmartScraperGraph`, `ScriptCreatorGraph`, `SearchGraph`). No brittle, hardcoded CSS selectors—automation scripts are synthesized dynamically on demand!
+* 🏙️ **Systematic Geographic Decomposition**: Overcomes Google Maps feed truncation caps (20–120 listings) by automatically partitioning cities into 8–15 administrative sectors, towns, and commercial districts.
 * 🔎 **Place ID Deduplication**: Robust cross-query deduplication via Google Maps Place IDs (`!1s...`), preventing duplicate business records across overlapping zones.
 * 🌐 **Website Health & Opportunity Detection**: Probes standalone websites via parallel HTTP checks with transient failure retry logic while classifying social profiles (Facebook, Instagram, TikTok, WhatsApp) and directories (oladoc, marham, yelp) as direct website opportunities.
 * 📊 **Dual Sales-Ready CSV Deliverables**:
@@ -108,7 +150,7 @@ This skill provides native, zero-configuration support for all leading agentic c
 
 ### How to Use With Your Favorite Tool
 
-* **Claude Code**: Simply run `claude` in this directory or copy `CLAUDE.md` to your workspace.
+* **Claude Code**: Simply run `claude` in your project root or copy `CLAUDE.md`.
 * **Google Antigravity**: Place in your `.agents/skills/` directory or reference `AGENTS.md`.
 * **Cursor**: The bundled `.cursorrules` and `.cursor/rules/google-maps-lead-generation.mdc` automatically activate when discussing scraping or leads.
 * **Windsurf**: Cascade natively reads the `.windsurfrules` configuration.
@@ -129,7 +171,10 @@ google-maps-lead-generation/
 ├── GEMINI.md                             # Gemini CLI & Google AI directives
 ├── README.md                             # Comprehensive showcase documentation
 ├── LICENSE                               # MIT License
+├── package.json                          # npm package configuration
 ├── requirements.txt                      # Python dependencies
+├── bin/
+│   └── cli.js                            # Executable CLI installer (npx)
 ├── .cursorrules                          # Cursor IDE legacy rule file
 ├── .windsurfrules                        # Windsurf IDE rule file
 ├── .clinerules                           # Cline / Roo Code rules
@@ -159,28 +204,18 @@ google-maps-lead-generation/
 
 ---
 
-## 🚀 Quickstart
+## 🚀 Quickstart & Usage
 
 ### 1. Prerequisites
 
 * Python 3.10 or higher
+* Node.js 16+ (for `npx` execution)
 * Chrome / Chromium browser binary (managed by Playwright)
 * An API key for your preferred LLM (OpenAI, Google Gemini, Anthropic, or local Ollama)
 
-### 2. Installation
+### 2. Environment Setup
 
-Clone the repository and install dependencies:
-
-```bash
-git clone https://github.com/ahmmikun/google-maps-lead-generation.git
-cd google-maps-lead-generation
-pip install -r requirements.txt
-playwright install chromium
-```
-
-### 3. Environment Setup
-
-Create a `.env` file in your root workspace:
+Configure your API key in your project's `.env`:
 
 ```env
 OPENAI_API_KEY=your-openai-api-key
@@ -188,7 +223,7 @@ OPENAI_API_KEY=your-openai-api-key
 GEMINI_API_KEY=your-gemini-api-key
 ```
 
-### 4. Running with an AI Agent
+### 3. Running with an AI Agent
 
 When activated in an Agent Skills client (Claude Code, Antigravity IDE, Cursor, etc.), simply instruct your agent:
 
