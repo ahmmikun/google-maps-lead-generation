@@ -1,0 +1,21 @@
+# Sample Decomposed Query Matrix for Physiotherapists in Lahore
+# Format: [Niche Term] [Sub-locality] + [Broader Term] [City]
+
+physiotherapy clinic DHA Lahore
+physiotherapy clinic Gulberg Lahore
+physiotherapy clinic Model Town Lahore
+physiotherapy clinic Johar Town Lahore
+physiotherapy clinic Bahria Town Lahore
+physiotherapy clinic Cantt Lahore
+physiotherapy clinic Faisal Town Lahore
+physiotherapy clinic Garden Town Lahore
+physiotherapy clinic Samanabad Lahore
+physiotherapy clinic Wapda Town Lahore
+physiotherapy clinic Shahdara Lahore
+physiotherapist DHA Lahore
+physiotherapist Gulberg Lahore
+physiotherapist Model Town Lahore
+physiotherapist Johar Town Lahore
+physiotherapist Bahria Town Lahore
+physical therapy Lahore
+rehab center Lahore

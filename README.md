@@ -1,0 +1,191 @@
+# 🗺️ Google Maps Lead Generation & Website Opportunity Skill
+
+[![Agent Skills Compliant](https://img.shields.io/badge/Agent_Skills-Specification_Compliant-7C3AED.svg?style=for-the-badge&logo=anthropic)](https://agentskills.io)
+[![ScrapeGraphAI](https://img.shields.io/badge/Core_Engine-ScrapeGraphAI-FF6B6B.svg?style=for-the-badge&logo=python)](https://github.com/ScrapeGraphAI/Scrapegraph-ai)
+[![Python Version](https://img.shields.io/badge/Python-3.10+-3776AB.svg?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+
+> A production-grade **[Agent Skill](https://agentskills.io)** that systematically discovers, scrapes, deduplicates, and verifies business leads across target geographic territories using **[ScrapeGraphAI](https://github.com/ScrapeGraphAI/Scrapegraph-ai)**. 
+> 
+> Automatically detects businesses with **no website**, **social-only presence**, or **broken/unreachable websites**, generating high-intent outreach leads for digital agencies, web developers, and B2B marketers.
+
+---
+
+## ⚡ Key Highlights
+
+* 🧠 **ScrapeGraphAI Core**: Powered by LLM graph pipelines (`SmartScraperGraph`, `ScriptCreatorGraph`, `SearchGraph`). No brittle, hardcoded scrapers—automation scripts are generated dynamically on demand!
+* 🏙️ **Systematic Geographic Decomposition**: Overcomes Google Maps feed truncation caps by partitioning cities into administrative sectors, towns, and commercial districts.
+* 🔎 **Place ID Deduplication**: Robust cross-query deduplication via Google Maps Place IDs (`!1s...`), preventing duplicate business records across overlapping zones.
+* 🌐 **Website Health & Opportunity Detection**: Probes standalone websites via parallel HTTP checks with transient failure retry logic while classifying social profiles (Facebook, Instagram, TikTok, WhatsApp) and directories (oladoc, marham, yelp) as direct website opportunities.
+* 📊 **Dual Sales-Ready CSV Deliverables**:
+  1. `[location]_[niche]_all_leads.csv` — Full universe of unique discovered businesses.
+  2. `[location]_[niche]_website_opportunity_leads.csv` — High-intent outreach prospects (missing, broken, or social-only websites).
+* 🧹 **Pristine Data Sanitization**: Automatically strips font icon glyphs (, ) and newline artifacts (`\n`) for direct import into Excel and CRMs.
+* 🛡️ **100% Agent Skills Spec Compliant**: Fully verified with the official [`skills-ref`](https://github.com/agentskills/agentskills/tree/main/skills-ref) validator.
+
+---
+
+## 🏗️ Architecture & Pipeline
+
+```text
+               ┌────────────────────────────────────────────────────────┐
+               │                     User Prompt                        │
+               │  "Find all physiotherapists in Lahore & export CSV"    │
+               └──────────────────────────┬─────────────────────────────┘
+                                          │
+                                          ▼
+               ┌────────────────────────────────────────────────────────┐
+               │               Agent Parameter Extraction               │
+               │   • Niche Normalization (physiotherapy, rehab center)  │
+               │   • Geographic Decomposition (Gulberg, DHA, Cantt...)  │
+               └──────────────────────────┬─────────────────────────────┘
+                                          │
+                                          ▼
+               ┌────────────────────────────────────────────────────────┐
+               │                 ScrapeGraphAI Engine                   │
+               │   • SmartScraperGraph / ScriptCreatorGraph             │
+               │   • Playwright DOM feed navigation & scrolling         │
+               │   • Place ID (!1s...) deduplication registry           │
+               └──────────────────────────┬─────────────────────────────┘
+                                          │
+                                          ▼
+               ┌────────────────────────────────────────────────────────┐
+               │              Website Health & Verification             │
+               │   • Social / Directory Profiling (not_own_website)     │
+               │   • Multi-threaded HTTP Health Probing (12s + Retry)   │
+               │   • Status: up, down_4xx, down_5xx, ssl_error, timeout │
+               └──────────────────────────┬─────────────────────────────┘
+                                          │
+                     ┌────────────────────┴────────────────────┐
+                     ▼                                         ▼
+   ┌───────────────────────────────────┐     ┌───────────────────────────────────┐
+   │        1. Complete Leads          │     │    2. Website Opportunity Leads   │
+   │  [location]_[niche]_all_leads.csv │     │ [location]_[niche]_opportunities  │
+   │  (Every discovered business)      │     │ (No website / social only / down) │
+   └───────────────────────────────────┘     └───────────────────────────────────┘
+```
+
+---
+
+## 📁 Repository Structure
+
+Adheres to the official [Agent Skills Directory Specification](https://agentskills.io/specification):
+
+```text
+google-maps-lead-generation/
+├── SKILL.md                              # Main agent instructions + frontmatter
+├── README.md                             # Repository overview and documentation
+├── LICENSE                               # MIT License
+├── requirements.txt                      # Python dependencies
+├── references/                           # Progressive disclosure documentation
+│   ├── scrapegraph-integration.md        # ScrapeGraphAI graph patterns & LLM configs
+│   ├── workflow-architecture.md          # End-to-end technical pipeline breakdown
+│   ├── data-schema.md                    # Standardized 14-field CSV & JSON schema
+│   └── geographic-methodology.md         # City partitioning & query matrix strategy
+└── assets/                               # Templates and schema definitions
+    ├── sample_output_schema.json         # JSON schema for lead records
+    └── sample_queries.txt                # Example geographic query matrix
+```
+
+---
+
+## 🚀 Quickstart
+
+### 1. Prerequisites
+
+* Python 3.10 or higher
+* Chrome / Chromium browser binary (managed by Playwright)
+* An API key for your preferred LLM (OpenAI, Google Gemini, Anthropic, or local Ollama)
+
+### 2. Installation
+
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/ahmmikun/google-maps-lead-generation.git
+cd google-maps-lead-generation
+pip install -r requirements.txt
+playwright install chromium
+```
+
+### 3. Environment Setup
+
+Create a `.env` file in your root workspace:
+
+```env
+OPENAI_API_KEY=your-openai-api-key
+# OR
+GEMINI_API_KEY=your-gemini-api-key
+```
+
+### 4. Running with an AI Agent
+
+When activated in an Agent Skills client (Claude Code, Antigravity IDE, Cursor, etc.), simply instruct your agent:
+
+> *"Generate a lead list of all software houses in Karachi and find businesses without functional websites."*
+
+The agent reads `SKILL.md`, consults the reference guides, initializes ScrapeGraphAI, extracts listings, audits websites, and outputs the two CSV files.
+
+---
+
+## 📊 Deliverable Schema (14 Columns)
+
+Both output CSV files follow this exact 14-field layout in UTF-8-SIG (Excel ready):
+
+| # | Field | Type | Description |
+|---|---|---|---|
+| 1 | `business_name` | string | Sanitized business / clinic name |
+| 2 | `category` | string | Google Maps category tag |
+| 3 | `phone` | string | Cleaned phone number (no icon or newline artifacts) |
+| 4 | `address` | string | Cleaned physical address |
+| 5 | `rating` | string | Average star rating (1.0 – 5.0) |
+| 6 | `reviews` | string | Review count, e.g. `(142)` |
+| 7 | `website` | string | Raw destination URL listed on Google Maps |
+| 8 | `website_type` | enum | `website`, `social`, `directory`, `none` |
+| 9 | `website_status` | enum | `up`, `no_website`, `not_own_website`, `down_timeout`, etc. |
+| 10 | `website_status_code` | int/str | HTTP response code (e.g. `200`, `404`, `500`) |
+| 11 | `website_status_detail`| string | Diagnostic error reason (e.g. `conn: ConnectionRefusedError`) |
+| 12 | `lead_reason` | enum | `no_website`, `no_own_website_social`, `website_down_*`, `has_website_up` |
+| 13 | `place_url` | string | Canonical Google Maps Place URL |
+| 14 | `source_query` | string | Search query that surfaced the lead |
+
+---
+
+## 🤖 Supported LLM Backends
+
+ScrapeGraphAI supports all major LLM backends:
+
+| Provider | Model Identifier | Config Key |
+|---|---|---|
+| **OpenAI** | `openai/gpt-4o-mini`, `openai/gpt-4o` | `api_key: os.environ["OPENAI_API_KEY"]` |
+| **Google Gemini** | `gemini/gemini-1.5-flash`, `gemini/gemini-1.5-pro` | `api_key: os.environ["GEMINI_API_KEY"]` |
+| **Anthropic** | `anthropic/claude-3-5-sonnet` | `api_key: os.environ["ANTHROPIC_API_KEY"]` |
+| **Ollama (Local)** | `ollama/llama3`, `ollama/mistral` | `base_url: "http://localhost:11434"` |
+
+---
+
+## ✅ Spec Validation
+
+To validate this skill against the official Agent Skills standard:
+
+```bash
+pip install skills-ref
+python -m skills_ref.cli validate ./google-maps-lead-generation
+```
+
+Output:
+```text
+Valid skill: google-maps-lead-generation
+```
+
+---
+
+## 🤝 Contributing
+
+Contributions, feedback, and pull requests are welcome! If you encounter any bugs or have feature suggestions, please open an issue on the [GitHub repository](https://github.com/ahmmikun/google-maps-lead-generation/issues).
+
+---
+
+## 📄 License
+
+Distributed under the [MIT License](LICENSE). Built for the open AI agent ecosystem.

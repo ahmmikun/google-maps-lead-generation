@@ -1,6 +1,13 @@
 ---
 name: google-maps-lead-generation
 description: Core powered by ScrapeGraphAI (https://github.com/ScrapeGraphAI/Scrapegraph-ai). Discovers, collects, deduplicates, and validates business leads across geographic areas on Google Maps using ScrapeGraphAI graphs (SmartScraperGraph, ScriptCreatorGraph) with AI agent orchestration. Verifies website availability via parallel HTTP checks, and outputs both a complete leads CSV and a high-intent website opportunity leads CSV (businesses with no website, social profiles only, or broken links). Activate when asked to find, scrape, list, or generate leads for any business category or niche in a specific city, town, or region (e.g., "Find all dentists in Lahore", "Create a CSV of gyms in Faisalabad", "Generate leads for software houses in Karachi").
+license: MIT
+compatibility: Requires Python 3.10+, Playwright Chromium, internet access, and an LLM API key (OpenAI, Gemini, Anthropic, or local Ollama).
+metadata:
+  author: ahmmikun
+  version: "1.0.0"
+  framework: scrapegraphai
+  specification: https://agentskills.io
 ---
 
 # Google Maps Lead Generation & Website Opportunity Skill
