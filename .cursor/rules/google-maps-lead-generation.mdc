@@ -1,0 +1,37 @@
+---
+description: Google Maps Lead Generation and Website Opportunity Discovery using ScrapeGraphAI
+globs: ["*"]
+alwaysApply: false
+---
+
+# Google Maps Lead Generation & Website Opportunity Skill (Cursor Rule)
+
+Activate when the user asks to:
+- Find, scrape, or extract local businesses or clinics (e.g., "Find all dentists in Lahore", "Find gyms in Faisalabad").
+- Find businesses without websites or with broken websites for web design / marketing outreach.
+- Generate automated scraping scripts using ScrapeGraphAI.
+
+## Core Rules
+
+1. **ScrapeGraphAI Engine**:
+   - Use `SmartScraperGraph` for direct scraping.
+   - Use `ScriptCreatorGraph` when the user asks for a standalone Python script.
+   - Support multiple LLM backends: OpenAI, Google Gemini, Anthropic Claude, or local Ollama.
+
+2. **Geographic Coverage**:
+   - Decompose target cities into 8–15 administrative sectors, towns, or commercial centers.
+   - Run a two-tier query matrix: (Primary Niche Term × Sub-localities) + (Secondary Terms × City).
+
+3. **Deduplication & Data Cleansing**:
+   - Deduplicate using Place ID regex `!1s([0-9a-fA-Fx]+:[0-9a-fA-Fx]+)`.
+   - Strip font icon glyphs `[\ue000-\uf8ff]` and newline characters `\n` from phone and address strings.
+
+4. **Website Auditing**:
+   - `none` or social profiles (Facebook, Instagram, LinkedIn, TikTok, WhatsApp) → Direct lead opportunity.
+   - Standalone sites: Check with HTTP GET (12s timeout, 1 retry). Down/unreachable sites → Direct lead opportunity.
+   - Functional sites (200/300) → Excluded from opportunity list.
+
+5. **Deliverables**:
+   - `output/[location]_[niche]_all_leads.csv`
+   - `output/[location]_[niche]_website_opportunity_leads.csv`
+   - Formatted in UTF-8-SIG with 14 standard schema fields.

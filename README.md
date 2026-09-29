@@ -67,6 +67,34 @@
 
 ---
 
+## 🤖 Supported AI IDEs & Agentic CLIs
+
+This skill provides native, zero-configuration support for all leading agentic coding environments and command-line agents:
+
+| Platform / IDE | Native Integration File | Adapter Location |
+|:---|:---|:---|
+| **Claude Code CLI** | `CLAUDE.md` | `adapters/claude/CLAUDE.md` |
+| **Google Antigravity IDE / CLI** | `AGENTS.md` | `adapters/antigravity/AGENTS.md` |
+| **Cursor IDE (v0.40+)** | `.cursor/rules/google-maps-lead-generation.mdc` | `adapters/cursor/google-maps-lead-generation.mdc` |
+| **Cursor IDE (Legacy)** | `.cursorrules` | `adapters/cursor/.cursorrules` |
+| **Windsurf IDE (Codeium)** | `.windsurfrules` | `adapters/windsurf/.windsurfrules` |
+| **VS Code / GitHub Copilot** | `.github/copilot-instructions.md` | `adapters/copilot/copilot-instructions.md` |
+| **Gemini CLI / Google AI** | `GEMINI.md` | `adapters/gemini/GEMINI.md` |
+| **Cline / Roo Code** | `.clinerules` | `adapters/cline/.clinerules` |
+| **Web LLMs (ChatGPT, Claude.ai, DeepSeek)** | *Prompt Template* | `adapters/system-prompt/prompt.md` |
+| **Universal Agent Skills Standard** | `SKILL.md` | [Specification Standard](https://agentskills.io) |
+
+### How to Use With Your Favorite Tool
+
+* **Claude Code**: Simply run `claude` in this directory or copy `CLAUDE.md` to your workspace.
+* **Google Antigravity**: Place in your `.agents/skills/` directory or reference `AGENTS.md`.
+* **Cursor**: The bundled `.cursorrules` and `.cursor/rules/google-maps-lead-generation.mdc` automatically activate when discussing scraping or leads.
+* **Windsurf**: Cascade natively reads the `.windsurfrules` configuration.
+* **GitHub Copilot**: Automatically loaded via `.github/copilot-instructions.md` in VS Code / JetBrains.
+* **Web Chat (ChatGPT / Claude.ai)**: Copy the standalone prompt from `adapters/system-prompt/prompt.md` into your conversation.
+
+---
+
 ## 📁 Repository Structure
 
 Adheres to the official [Agent Skills Directory Specification](https://agentskills.io/specification):
@@ -74,9 +102,29 @@ Adheres to the official [Agent Skills Directory Specification](https://agentskil
 ```text
 google-maps-lead-generation/
 ├── SKILL.md                              # Main agent instructions + frontmatter
-├── README.md                             # Repository overview and documentation
+├── AGENTS.md                             # Google Antigravity & universal agent directives
+├── CLAUDE.md                             # Claude Code CLI instructions
+├── GEMINI.md                             # Gemini CLI & Google AI directives
+├── README.md                             # Comprehensive showcase documentation
 ├── LICENSE                               # MIT License
 ├── requirements.txt                      # Python dependencies
+├── .cursorrules                          # Cursor IDE legacy rule file
+├── .windsurfrules                        # Windsurf IDE rule file
+├── .clinerules                           # Cline / Roo Code rules
+├── .cursor/rules/
+│   └── google-maps-lead-generation.mdc  # Cursor 0.40+ rule engine definition
+├── .github/
+│   └── copilot-instructions.md           # GitHub Copilot instructions
+├── adapters/                             # Standalone adapters for external projects
+│   ├── antigravity/AGENTS.md
+│   ├── claude/CLAUDE.md
+│   ├── cursor/.cursorrules
+│   ├── cursor/google-maps-lead-generation.mdc
+│   ├── windsurf/.windsurfrules
+│   ├── copilot/copilot-instructions.md
+│   ├── gemini/GEMINI.md
+│   ├── cline/.clinerules
+│   └── system-prompt/prompt.md
 ├── references/                           # Progressive disclosure documentation
 │   ├── scrapegraph-integration.md        # ScrapeGraphAI graph patterns & LLM configs
 │   ├── workflow-architecture.md          # End-to-end technical pipeline breakdown

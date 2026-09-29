@@ -1,0 +1,33 @@
+# Cursor Rules — Google Maps Lead Generation Adapter
+
+Copy this file to `.cursorrules` in your project root.
+
+1. ARCHITECTURE:
+   - Use ScrapeGraphAI (`scrapegraphai`) as the core engine.
+   - For direct scraping, use `SmartScraperGraph`.
+   - For user requests asking to write or save a scraping script, use `ScriptCreatorGraph` to generate clean Playwright automation scripts.
+   - Do not use brittle hardcoded selectors.
+
+2. GEOGRAPHIC DECOMPOSITION:
+   - Never search just "niche in city". Google Maps truncates after 20-120 listings.
+   - Always decompose the target city into 8–15 sub-localities (e.g. towns, commercial districts, administrative sectors).
+   - Construct a multi-query matrix: [Primary Term] × [Sub-localities] + [Secondary Terms] × [City].
+
+3. DEDUPLICATION:
+   - Extract the Google Maps Place ID via regex `!1s([0-9a-fA-Fx]+:[0-9a-fA-Fx]+)`.
+   - Deduplicate across queries using Place ID as the primary key.
+
+4. DATA SANITIZATION:
+   - Strip Unicode Private Use Area icon glyphs (`[\ue000-\uf8ff]`) from phone numbers and addresses (Google Maps phone/pin icon fonts).
+   - Strip all `\n` and `\r` whitespace artifacts.
+
+5. WEBSITE VERIFICATION & LEAD CLASSIFICATION:
+   - Classify URLs: `none`, `social` (Facebook, Instagram, LinkedIn, TikTok, WhatsApp), `directory` (oladoc, marham, yelp), or `website`.
+   - Social and directory profiles qualify as `not_own_website` (direct sales opportunities).
+   - Probe standalone websites via HTTP GET (12s timeout, browser User-Agent, 1 retry). Classify as `up` or `down_*`.
+
+6. OUTPUT CONTRACT:
+   - Always output two CSV files in UTF-8-SIG encoding:
+     a) `output/[location]_[niche]_all_leads.csv`
+     b) `output/[location]_[niche]_website_opportunity_leads.csv`
+   - Include all 14 standard schema fields.

@@ -1,0 +1,17 @@
+# Windsurf Rules — Google Maps Lead Generation & Website Opportunity Skill
+
+When processing business lead generation, Google Maps extraction, or website opportunity requests:
+
+1. Use ScrapeGraphAI (`scrapegraphai`) as the core scraping framework with Playwright browser support.
+2. For ad-hoc extraction, run `SmartScraperGraph`. For user requests to write a scraping script, use `ScriptCreatorGraph` to generate clean, maintainable Playwright code.
+3. Overcome Google Maps truncation limits by decomposing requested cities into 8–15 realistic administrative areas, towns, and commercial districts.
+4. Extract Google Maps Place IDs (`!1s...`) to deduplicate listings across overlapping queries.
+5. Sanitize all contact details by stripping private-use unicode font icon glyphs (`[\ue000-\uf8ff]`) and newline artifacts (`\n`) from phones and addresses.
+6. Verify website reachability:
+   - No website or social profile (Facebook, Instagram, LinkedIn, TikTok, WhatsApp) → High-intent lead (`not_own_website`).
+   - Dedicated website → Multi-threaded HTTP GET verification (12s timeout, retries on transient errors). Broken websites (4xx/5xx/SSL/DNS) → High-intent lead (`website_down_*`).
+   - Active website (200/300) → Excluded from opportunity list.
+7. Generate two standardized CSV outputs in UTF-8-SIG encoding:
+   - `output/[location]_[niche]_all_leads.csv`
+   - `output/[location]_[niche]_website_opportunity_leads.csv`
+   following the 14-column schema defined in `references/data-schema.md`.

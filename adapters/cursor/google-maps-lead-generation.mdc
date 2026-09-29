@@ -1,0 +1,17 @@
+---
+description: Google Maps Lead Generation and Website Opportunity Discovery using ScrapeGraphAI
+globs: ["*"]
+alwaysApply: false
+---
+
+# Google Maps Lead Generation Adapter (Cursor 0.40+ MDC Rule)
+
+Copy this file to `.cursor/rules/google-maps-lead-generation.mdc` in your project.
+
+## Directives
+- **Engine**: ScrapeGraphAI (`SmartScraperGraph`, `ScriptCreatorGraph`).
+- **Geographic Partitioning**: Decompose cities into 8–15 administrative sectors to bypass Google Maps truncation caps.
+- **Place ID Deduplication**: Match listings across queries using Place ID regex `!1s([0-9a-fA-Fx]+:[0-9a-fA-Fx]+)`.
+- **Data Cleansing**: Strip private-use font icon glyphs `[\ue000-\uf8ff]` and newline characters `\n` from phone and address attributes.
+- **Website Auditing**: Test standalone URLs via parallel HTTP GET requests (12s timeout, 1 retry). Classify social and directory URLs as `not_own_website`.
+- **Outputs**: Output both `[location]_[niche]_all_leads.csv` and `[location]_[niche]_website_opportunity_leads.csv` in UTF-8-SIG with 14 schema fields.

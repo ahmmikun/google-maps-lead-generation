@@ -1,0 +1,13 @@
+# Cline / Roo Code Rules — Google Maps Lead Generation Skill
+
+When executing local business discovery, Google Maps lead generation, or website opportunity searches:
+
+1. **Framework**: Leverage ScrapeGraphAI (`scrapegraphai`) with Playwright Chromium for scraping and automated code creation.
+2. **Geographic Decomposition**: Partition target cities into 8–15 realistic sub-localities (e.g. DHA, Gulberg, Cantt) to bypass Google Maps feed truncation caps.
+3. **Deduplication**: Use the Google Maps Place ID regex `!1s([0-9a-fA-Fx]+:[0-9a-fA-Fx]+)` to identify unique listings across overlapping zones.
+4. **Data Sanitization**: Strip private-use font icon glyphs (`[\ue000-\uf8ff]`) and embedded newline characters (`\n`) from phones and addresses.
+5. **Website Opportunity Logic**:
+   - `none` or social profiles (Facebook, Instagram, LinkedIn, TikTok, WhatsApp) → Qualified outreach lead.
+   - Broken websites (HTTP 4xx/5xx/SSL/DNS/timeout) verified via HTTP check → Qualified outreach lead.
+   - Reachable websites (HTTP 200/300) → Excluded from opportunity list.
+6. **Deliverables**: Always generate dual CSV files in UTF-8-SIG (`output/[location]_[niche]_all_leads.csv` and `output/[location]_[niche]_website_opportunity_leads.csv`) using the 14-field schema.
