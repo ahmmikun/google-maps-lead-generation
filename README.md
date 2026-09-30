@@ -5,6 +5,7 @@
 ### Autonomous Lead Discovery, Geographic Partitioning & Website Opportunity Engine for AI Coding Agents
 
 [![npm version](https://img.shields.io/npm/v/google-maps-lead-generation.svg?style=for-the-badge&color=CB3837&logo=npm)](https://www.npmjs.com/package/google-maps-lead-generation)
+[![skills.sh Pack](https://img.shields.io/badge/skills.sh_Pack-fUpNzFenBCO5BqUX-06B6D4.svg?style=for-the-badge&logo=gnubash&logoColor=white)](https://www.skills.sh/p/fUpNzFenBCO5BqUX)
 [![skills.sh](https://img.shields.io/badge/skills.sh-Available-06B6D4.svg?style=for-the-badge&logo=gnubash&logoColor=white)](https://skills.sh/ahmmikun/google-maps-lead-generation)
 [![Claude Code Marketplace](https://img.shields.io/badge/Claude_Code-Marketplace_Ready-D97706.svg?style=for-the-badge&logo=anthropic)](https://github.com/ahmmikun/google-maps-lead-generation)
 [![Agent Skills Compliant](https://img.shields.io/badge/Agent_Skills-Specification_Compliant-7C3AED.svg?style=for-the-badge&logo=anthropic)](https://agentskills.io)
@@ -19,14 +20,17 @@ Specialized for **Claude Code** · **Google Antigravity** · **Cursor IDE** · *
 <br/>
 
 ```bash
-# Method 1: Universal skills.sh installer
+# Method 1: Official skills.sh Pack (Recommended)
+npx skills add https://skills.sh/p/fUpNzFenBCO5BqUX
+
+# Method 2: Universal skills.sh repository installer
 npx skills add ahmmikun/google-maps-lead-generation
 
-# Method 2: Claude Code Marketplace
+# Method 3: Claude Code Marketplace
 /plugin marketplace add ahmmikun/google-maps-lead-generation
 /plugin install google-maps-lead-generation
 
-# Method 3: Interactive Multi-Agent Installer
+# Method 4: Interactive Multi-Agent Installer
 npx google-maps-lead-generation init
 ```
 
@@ -48,17 +52,25 @@ Automatically categorizes and isolates high-intent B2B outreach prospects:
 
 ## ⚡ Installation Options
 
-### 1. Via `skills.sh` (Universal Agent Skills Ecosystem)
+### 1. Via Official `skills.sh` Pack *(Instant 1-Click Install)*
 
-Add directly to any AI workspace running an Agent Skills compatible client using the official `skills` CLI:
+Install the official verified pack directly into any Agent Skills-compatible environment:
+
+```bash
+npx skills add https://skills.sh/p/fUpNzFenBCO5BqUX
+```
+
+> 📦 **Live Pack Page**: [Google Maps Lead Gen & Web Discovery on skills.sh](https://www.skills.sh/p/fUpNzFenBCO5BqUX)
+
+### 2. Via `skills.sh` Repository
+
+Add directly via the GitHub repository source:
 
 ```bash
 npx skills add ahmmikun/google-maps-lead-generation
 ```
 
-This clones and activates the skill natively across your project directory.
-
-### 2. Via Claude Code Marketplace
+### 3. Via Claude Code Marketplace
 
 If you are using Anthropic's **Claude Code** CLI, install directly via the built-in plugin marketplace system:
 
@@ -70,7 +82,7 @@ If you are using Anthropic's **Claude Code** CLI, install directly via the built
 /plugin install google-maps-lead-generation
 ```
 
-### 3. Via Interactive NPX Wizard (Multi-Agent Configuration)
+### 4. Via Interactive NPX Wizard (Multi-Agent Configuration)
 
 Run one command in the root of any workspace to interactively configure your target editor or IDE:
 
