@@ -1,0 +1,20 @@
+{
+  "name": "google-maps-lead-generation",
+  "version": "1.0.1",
+  "description": "Google Maps lead generation & website opportunity discovery skill powered by ScrapeGraphAI for Claude Code",
+  "author": {
+    "name": "Salman Ahmad",
+    "email": "salmansheikh2500@gmail.com"
+  },
+  "homepage": "https://github.com/ahmmikun/google-maps-lead-generation#readme",
+  "repository": "https://github.com/ahmmikun/google-maps-lead-generation",
+  "license": "MIT",
+  "keywords": [
+    "lead-generation",
+    "google-maps",
+    "scrapegraphai",
+    "agent-skills",
+    "claude-code"
+  ],
+  "skills": ["SKILL.md"]
+}

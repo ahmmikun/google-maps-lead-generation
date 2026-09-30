@@ -1,0 +1,19 @@
+{
+  "name": "google-maps-lead-generation",
+  "owner": {
+    "name": "Salman Ahmad",
+    "email": "salmansheikh2500@gmail.com"
+  },
+  "metadata": {
+    "description": "Google Maps lead generation & website opportunity discovery skill powered by ScrapeGraphAI for Claude Code",
+    "version": "1.0.1"
+  },
+  "plugins": [
+    {
+      "name": "google-maps-lead-generation",
+      "description": "Systematic geographic lead discovery and website opportunity identification across Google Maps",
+      "version": "1.0.1",
+      "repository": "https://github.com/ahmmikun/google-maps-lead-generation"
+    }
+  ]
+}

@@ -19,3 +19,4 @@ output/
 *.json
 !package.json
 !assets/*.json
+!.claude-plugin/*.json

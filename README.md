@@ -5,7 +5,8 @@
 ### Autonomous Lead Discovery, Geographic Partitioning & Website Opportunity Engine for AI Coding Agents
 
 [![npm version](https://img.shields.io/npm/v/google-maps-lead-generation.svg?style=for-the-badge&color=CB3837&logo=npm)](https://www.npmjs.com/package/google-maps-lead-generation)
-[![npm downloads](https://img.shields.io/npm/dt/google-maps-lead-generation.svg?style=for-the-badge&color=2563EB&logo=npm)](https://www.npmjs.com/package/google-maps-lead-generation)
+[![skills.sh](https://img.shields.io/badge/skills.sh-Available-06B6D4.svg?style=for-the-badge&logo=gnubash&logoColor=white)](https://skills.sh/ahmmikun/google-maps-lead-generation)
+[![Claude Code Marketplace](https://img.shields.io/badge/Claude_Code-Marketplace_Ready-D97706.svg?style=for-the-badge&logo=anthropic)](https://github.com/ahmmikun/google-maps-lead-generation)
 [![Agent Skills Compliant](https://img.shields.io/badge/Agent_Skills-Specification_Compliant-7C3AED.svg?style=for-the-badge&logo=anthropic)](https://agentskills.io)
 [![ScrapeGraphAI](https://img.shields.io/badge/Core_Engine-ScrapeGraphAI-FF6B6B.svg?style=for-the-badge&logo=python)](https://github.com/ScrapeGraphAI/Scrapegraph-ai)
 [![Python Version](https://img.shields.io/badge/Python-3.10+-3776AB.svg?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
@@ -18,6 +19,14 @@ Specialized for **Claude Code** · **Google Antigravity** · **Cursor IDE** · *
 <br/>
 
 ```bash
+# Method 1: Universal skills.sh installer
+npx skills add ahmmikun/google-maps-lead-generation
+
+# Method 2: Claude Code Marketplace
+/plugin marketplace add ahmmikun/google-maps-lead-generation
+/plugin install google-maps-lead-generation
+
+# Method 3: Interactive Multi-Agent Installer
 npx google-maps-lead-generation init
 ```
 
@@ -37,9 +46,33 @@ Automatically categorizes and isolates high-intent B2B outreach prospects:
 
 ---
 
-## ⚡ Quick Install via NPX
+## ⚡ Installation Options
 
-Run one command in the root of any workspace or project:
+### 1. Via `skills.sh` (Universal Agent Skills Ecosystem)
+
+Add directly to any AI workspace running an Agent Skills compatible client using the official `skills` CLI:
+
+```bash
+npx skills add ahmmikun/google-maps-lead-generation
+```
+
+This clones and activates the skill natively across your project directory.
+
+### 2. Via Claude Code Marketplace
+
+If you are using Anthropic's **Claude Code** CLI, install directly via the built-in plugin marketplace system:
+
+```bash
+# Add the marketplace repository
+/plugin marketplace add ahmmikun/google-maps-lead-generation
+
+# Install the skill plugin
+/plugin install google-maps-lead-generation
+```
+
+### 3. Via Interactive NPX Wizard (Multi-Agent Configuration)
+
+Run one command in the root of any workspace to interactively configure your target editor or IDE:
 
 ```bash
 npx google-maps-lead-generation init
@@ -190,6 +223,9 @@ google-maps-lead-generation/
 │   └── google-maps-lead-generation.mdc  # Cursor 0.40+ rule engine definition
 ├── .github/
 │   └── copilot-instructions.md           # GitHub Copilot instructions
+├── .claude-plugin/                       # Claude Code Plugin & Marketplace manifests
+│   ├── plugin.json                       # Claude Code plugin definition
+│   └── marketplace.json                  # Claude Code marketplace listing
 ├── adapters/                             # Standalone adapters for external projects
 │   ├── antigravity/AGENTS.md
 │   ├── claude/CLAUDE.md
