@@ -18,5 +18,6 @@ output/
 *.csv
 *.json
 !package.json
+!skills.sh.json
 !assets/*.json
 !.claude-plugin/*.json

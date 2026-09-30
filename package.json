@@ -50,7 +50,8 @@
     "adapters",
     "references",
     "assets",
-    ".claude-plugin"
+    ".claude-plugin",
+    "skills.sh.json"
   ],
   "scripts": {
     "test": "node bin/cli.js --help",

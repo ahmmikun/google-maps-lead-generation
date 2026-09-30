@@ -1,0 +1,13 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Lead Generation & Scraping",
+      "description": "Systematic geographic lead discovery and website opportunity identification across Google Maps powered by ScrapeGraphAI.",
+      "skills": [
+        "google-maps-lead-generation"
+      ]
+    }
+  ]
+}
