@@ -2,7 +2,8 @@
 
 /**
  * google-maps-lead-generation CLI
- * Cross-platform installer for AI coding assistants and IDEs.
+ * The Autonomous Lead Generation & Website Opportunity Skill for AI Agents
+ * https://github.com/ahmmikun/google-maps-lead-generation
  */
 
 const fs = require('fs');
@@ -12,22 +13,49 @@ const readline = require('readline');
 const ROOT_DIR = path.resolve(__dirname, '..');
 const PKG = require(path.join(ROOT_DIR, 'package.json'));
 
-// Terminal color helpers
+// Terminal Color & Styling Utilities
 const c = {
   reset: '\x1b[0m',
   bold: '\x1b[1m',
   dim: '\x1b[2m',
+  italic: '\x1b[3m',
+  underline: '\x1b[4m',
+
+  // Foreground Colors
+  black: '\x1b[30m',
+  red: '\x1b[31m',
   green: '\x1b[32m',
-  cyan: '\x1b[36m',
   yellow: '\x1b[33m',
+  blue: '\x1b[34m',
   magenta: '\x1b[35m',
+  cyan: '\x1b[36m',
   white: '\x1b[37m',
-  dot: '\x1b[32m●\x1b[0m',
+
+  // Bright Colors
+  brightGreen: '\x1b[92m',
+  brightCyan: '\x1b[96m',
+  brightYellow: '\x1b[93m',
+  brightMagenta: '\x1b[95m',
+  brightWhite: '\x1b[97m',
+
+  // Background
+  bgCyan: '\x1b[46m\x1b[30m',
+  bgMagenta: '\x1b[45m\x1b[37m',
+  bgDark: '\x1b[100m\x1b[37m',
 };
 
 function printBanner() {
-  console.log(`\n${c.cyan}${c.bold}Google Maps Lead Generation & Website Opportunity Skill${c.reset} ${c.dim}v${PKG.version}${c.reset}`);
-  console.log(`${c.dim}Powered by ScrapeGraphAI · Compatible with all Agentic AI IDEs & CLIs${c.reset}\n`);
+  const logo = `
+${c.brightCyan}${c.bold}  ██████╗ ███╗   ███╗ █████╗ ██████╗ ███████╗
+ ██╔════╝ ████╗ ████║██╔══██╗██╔══██╗██╔════╝
+ ██║  ███╗██╔████╔██║███████║██████╔╝███████╗
+ ██║   ██║██║╚██╔╝██║██╔══██║██╔═══╝ ╚════██║
+ ╚██████╔╝██║ ╚═╝ ██║██║  ██║██║     ███████║
+  ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝     ╚══════╝${c.reset}
+  ${c.brightMagenta}${c.bold}LEAD GENERATION & WEBSITE OPPORTUNITY ENGINE${c.reset}
+  ${c.dim}Core Powered by ScrapeGraphAI · v${PKG.version}${c.reset}
+`;
+  console.log(logo);
 }
 
 function copyRecursiveSync(src, dest) {
@@ -46,7 +74,8 @@ function copyRecursiveSync(src, dest) {
 }
 
 function installSkill(targetDir, targets = ['all']) {
-  console.log(`${c.bold}Installing into:${c.reset} ${c.cyan}${path.resolve(targetDir)}${c.reset}\n`);
+  const resolvedTarget = path.resolve(targetDir);
+  console.log(`\n${c.bold}Target Workspace:${c.reset} ${c.brightCyan}${resolvedTarget}${c.reset}\n`);
 
   const results = [];
   const shouldInstallAll = targets.includes('all');
@@ -70,7 +99,7 @@ function installSkill(targetDir, targets = ['all']) {
       copyRecursiveSync(src, path.join(canonicalDir, d));
     }
   });
-  results.push(`Canonical Agent Skill   -> .agents/skills/google-maps-lead-generation/`);
+  results.push({ name: 'Canonical Agent Skill', path: '.agents/skills/google-maps-lead-generation/' });
 
   // 2. Claude Code (CLAUDE.md)
   if (shouldInstallAll || targets.includes('claude')) {
@@ -78,7 +107,7 @@ function installSkill(targetDir, targets = ['all']) {
     const src = path.join(ROOT_DIR, 'CLAUDE.md');
     if (fs.existsSync(src)) {
       fs.copyFileSync(src, dest);
-      results.push(`Claude Code Directives  -> CLAUDE.md`);
+      results.push({ name: 'Claude Code Directives', path: 'CLAUDE.md' });
     }
   }
 
@@ -88,7 +117,7 @@ function installSkill(targetDir, targets = ['all']) {
     const src = path.join(ROOT_DIR, 'AGENTS.md');
     if (fs.existsSync(src)) {
       fs.copyFileSync(src, dest);
-      results.push(`Antigravity Directives  -> AGENTS.md`);
+      results.push({ name: 'Antigravity / Universal Agent', path: 'AGENTS.md' });
     }
   }
 
@@ -98,7 +127,7 @@ function installSkill(targetDir, targets = ['all']) {
     const cursorRulesSrc = path.join(ROOT_DIR, '.cursorrules');
     if (fs.existsSync(cursorRulesSrc)) {
       fs.copyFileSync(cursorRulesSrc, cursorRulesDest);
-      results.push(`Cursor Legacy Rules     -> .cursorrules`);
+      results.push({ name: 'Cursor Legacy Rules', path: '.cursorrules' });
     }
 
     const mdcDest = path.join(targetDir, '.cursor', 'rules', 'google-maps-lead-generation.mdc');
@@ -106,7 +135,7 @@ function installSkill(targetDir, targets = ['all']) {
     if (fs.existsSync(mdcSrc)) {
       fs.mkdirSync(path.dirname(mdcDest), { recursive: true });
       fs.copyFileSync(mdcSrc, mdcDest);
-      results.push(`Cursor v0.40+ MDC Rule  -> .cursor/rules/google-maps-lead-generation.mdc`);
+      results.push({ name: 'Cursor v0.40+ MDC Rule', path: '.cursor/rules/google-maps-lead-generation.mdc' });
     }
   }
 
@@ -116,7 +145,7 @@ function installSkill(targetDir, targets = ['all']) {
     const src = path.join(ROOT_DIR, '.windsurfrules');
     if (fs.existsSync(src)) {
       fs.copyFileSync(src, dest);
-      results.push(`Windsurf Cascade Rules  -> .windsurfrules`);
+      results.push({ name: 'Windsurf Cascade Rules', path: '.windsurfrules' });
     }
   }
 
@@ -127,7 +156,7 @@ function installSkill(targetDir, targets = ['all']) {
     if (fs.existsSync(src)) {
       fs.mkdirSync(path.dirname(dest), { recursive: true });
       fs.copyFileSync(src, dest);
-      results.push(`GitHub Copilot Rules    -> .github/copilot-instructions.md`);
+      results.push({ name: 'GitHub Copilot Directives', path: '.github/copilot-instructions.md' });
     }
   }
 
@@ -137,7 +166,7 @@ function installSkill(targetDir, targets = ['all']) {
     const src = path.join(ROOT_DIR, 'GEMINI.md');
     if (fs.existsSync(src)) {
       fs.copyFileSync(src, dest);
-      results.push(`Gemini CLI Directives   -> GEMINI.md`);
+      results.push({ name: 'Gemini CLI Instructions', path: 'GEMINI.md' });
     }
   }
 
@@ -147,25 +176,35 @@ function installSkill(targetDir, targets = ['all']) {
     const src = path.join(ROOT_DIR, '.clinerules');
     if (fs.existsSync(src)) {
       fs.copyFileSync(src, dest);
-      results.push(`Cline / Roo Code Rules  -> .clinerules`);
+      results.push({ name: 'Cline / Roo Code Rules', path: '.clinerules' });
     }
   }
 
-  results.forEach((msg) => console.log(`  ${c.green}✓${c.reset} ${msg}`));
-  console.log(`\n${c.green}${c.bold}Successfully installed!${c.reset}`);
-  console.log(`${c.dim}Your AI coding agent will now automatically activate when you ask to find leads, scrape Google Maps, or identify website opportunities.${c.reset}`);
-  console.log(`\n${c.bold}Try asking your agent:${c.reset}`);
-  console.log(`  ${c.cyan}"Find all physiotherapists in Lahore and identify businesses without websites"${c.reset}\n`);
+  // Render stylized installation summary box
+  console.log(`╭${'─'.repeat(66)}╮`);
+  results.forEach((item) => {
+    const label = `${item.name.padEnd(28)}`;
+    const line = `  ${c.brightGreen}✔${c.reset}  ${c.bold}${label}${c.reset} ${c.dim}→ ${item.path}${c.reset}`;
+    console.log(`│ ${line.padEnd(76)} │`);
+  });
+  console.log(`╰${'─'.repeat(66)}╯\n`);
+
+  console.log(`${c.brightGreen}${c.bold}🎉 Setup Complete! Skill successfully activated.${c.reset}`);
+  console.log(`${c.dim}Your AI coding assistant will now automatically recognize Google Maps lead generation and website audit tasks.${c.reset}\n`);
+
+  console.log(`${c.bold}⚡ Quick Test Prompt:${c.reset}`);
+  console.log(`  ${c.brightCyan}"Find all physiotherapists in Lahore and generate a CSV of businesses without websites"${c.reset}\n`);
 }
 
 const MENU_OPTIONS = [
-  { key: '1', targets: ['all'], label: 'All Platforms (Claude, Antigravity, Cursor, Windsurf, Copilot, Gemini) - [Recommended]' },
-  { key: '2', targets: ['claude'], label: 'Claude Code CLI (CLAUDE.md)' },
-  { key: '3', targets: ['antigravity', 'gemini'], label: 'Google Antigravity & Gemini CLI (AGENTS.md & GEMINI.md)' },
-  { key: '4', targets: ['cursor'], label: 'Cursor IDE (.cursorrules & .cursor/rules/*.mdc)' },
-  { key: '5', targets: ['windsurf'], label: 'Windsurf IDE (.windsurfrules)' },
-  { key: '6', targets: ['copilot'], label: 'VS Code / GitHub Copilot (.github/copilot-instructions.md)' },
-  { key: '7', targets: null, label: 'Export Standalone Prompt for Web LLMs (ChatGPT, Claude.ai)' },
+  { key: '1', targets: ['all'], label: '🚀 All Platforms (Claude, Antigravity, Cursor, Windsurf, Copilot, Gemini)' },
+  { key: '2', targets: ['claude'], label: '🤖 Claude Code CLI (CLAUDE.md)' },
+  { key: '3', targets: ['antigravity', 'gemini'], label: '🪐 Google Antigravity & Gemini CLI (AGENTS.md & GEMINI.md)' },
+  { key: '4', targets: ['cursor'], label: '⚡ Cursor IDE (.cursorrules & .cursor/rules/*.mdc)' },
+  { key: '5', targets: ['windsurf'], label: '🌊 Windsurf Cascade (.windsurfrules)' },
+  { key: '6', targets: ['copilot'], label: '🐙 VS Code / GitHub Copilot (.github/copilot-instructions.md)' },
+  { key: '7', targets: ['cline'], label: '🦾 Cline / Roo Code (.clinerules)' },
+  { key: '8', targets: null, label: '💬 Export Standalone System Prompt for ChatGPT / Claude.ai' },
 ];
 
 function promptInteractive(targetDir) {
@@ -176,10 +215,10 @@ function promptInteractive(targetDir) {
     return;
   }
 
-  console.log(`${c.bold}Select your AI platform or IDE:${c.reset} ${c.dim}(Use ↑/↓ arrows, Enter to select, or press 1-7)${c.reset}\n`);
+  console.log(`${c.bold}Select your AI coding assistant or editor:${c.reset} ${c.dim}(Use ↑/↓, Enter to select, or press 1-8)${c.reset}\n`);
 
   let selectedIndex = 0;
-  process.stdout.write('\x1b[?25l');
+  process.stdout.write('\x1b[?25l'); // Hide cursor
 
   function renderMenu(isInitial) {
     if (!isInitial) {
@@ -189,7 +228,7 @@ function promptInteractive(targetDir) {
       readline.clearLine(process.stdout, 0);
       readline.cursorTo(process.stdout, 0);
       if (idx === selectedIndex) {
-        process.stdout.write(`  ${c.dot} ${c.bold}[${idx + 1}] ${opt.label}${c.reset}\n`);
+        process.stdout.write(`  ${c.brightCyan}❯${c.reset} ${c.bold}${c.brightWhite}[${idx + 1}] ${opt.label}${c.reset}\n`);
       } else {
         process.stdout.write(`    ${c.dim}[${idx + 1}] ${opt.label}${c.reset}\n`);
       }
@@ -209,7 +248,7 @@ function promptInteractive(targetDir) {
     if (process.stdin.isTTY) {
       process.stdin.setRawMode(false);
     }
-    process.stdout.write('\x1b[?25h');
+    process.stdout.write('\x1b[?25h'); // Restore cursor
   }
 
   function onKeypress(str, key) {
@@ -220,7 +259,7 @@ function promptInteractive(targetDir) {
 
     if (key && (key.name === 'q' || key.name === 'escape')) {
       cleanup();
-      console.log(`\n${c.dim}Installation cancelled.${c.reset}\n`);
+      console.log(`\n${c.dim}Operation cancelled.${c.reset}\n`);
       process.exit(0);
     }
 
@@ -233,7 +272,7 @@ function promptInteractive(targetDir) {
     } else if (key && (key.name === 'return' || key.name === 'enter' || key.name === 'space')) {
       cleanup();
       confirmChoice(selectedIndex);
-    } else if (str && ['1', '2', '3', '4', '5', '6', '7'].includes(str)) {
+    } else if (str && ['1', '2', '3', '4', '5', '6', '7', '8'].includes(str)) {
       selectedIndex = parseInt(str, 10) - 1;
       cleanup();
       confirmChoice(selectedIndex);
@@ -243,13 +282,8 @@ function promptInteractive(targetDir) {
   function confirmChoice(idx) {
     console.log('');
     const chosenOption = MENU_OPTIONS[idx];
-    if (chosenOption.key === '7') {
-      const promptFile = path.join(ROOT_DIR, 'adapters', 'system-prompt', 'prompt.md');
-      const destPrompt = path.join(targetDir, 'lead-gen-prompt.md');
-      fs.copyFileSync(promptFile, destPrompt);
-      console.log(`  ${c.green}✓${c.reset} Standalone prompt exported to: ${c.bold}${destPrompt}${c.reset}`);
-      console.log(`  ${c.dim}Copy and paste into ChatGPT, Claude.ai, or any web LLM instructions.${c.reset}\n`);
-      process.exit(0);
+    if (chosenOption.key === '8') {
+      exportPrompt(targetDir);
       return;
     }
 
@@ -259,11 +293,78 @@ function promptInteractive(targetDir) {
   process.stdin.on('keypress', onKeypress);
 }
 
-// Parse Command Line Arguments
+function exportPrompt(targetDir) {
+  const promptFile = path.join(ROOT_DIR, 'adapters', 'system-prompt', 'prompt.md');
+  const destPrompt = path.join(targetDir, 'lead-gen-prompt.md');
+  fs.copyFileSync(promptFile, destPrompt);
+  console.log(`\n  ${c.brightGreen}✔${c.reset} ${c.bold}Standalone System Prompt exported to:${c.reset} ${c.brightCyan}${destPrompt}${c.reset}`);
+  console.log(`  ${c.dim}Copy and paste into ChatGPT, Claude.ai, Gemini Web, or any web LLM instructions.${c.reset}\n`);
+}
+
+function showStatus(targetDir) {
+  printBanner();
+  console.log(`${c.bold}Workspace Audit for:${c.reset} ${c.brightCyan}${path.resolve(targetDir)}${c.reset}\n`);
+
+  const checks = [
+    { name: 'Canonical Agent Skill', path: '.agents/skills/google-maps-lead-generation/SKILL.md' },
+    { name: 'Claude Code Directives', path: 'CLAUDE.md' },
+    { name: 'Google Antigravity Rules', path: 'AGENTS.md' },
+    { name: 'Cursor Legacy Rules', path: '.cursorrules' },
+    { name: 'Cursor v0.40+ MDC Rule', path: '.cursor/rules/google-maps-lead-generation.mdc' },
+    { name: 'Windsurf Cascade Rules', path: '.windsurfrules' },
+    { name: 'GitHub Copilot Instructions', path: '.github/copilot-instructions.md' },
+    { name: 'Gemini CLI Instructions', path: 'GEMINI.md' },
+    { name: 'Cline / Roo Code Rules', path: '.clinerules' },
+  ];
+
+  console.log(`╭${'─'.repeat(66)}╮`);
+  checks.forEach((item) => {
+    const fullPath = path.join(targetDir, item.path);
+    const installed = fs.existsSync(fullPath);
+    const mark = installed ? `${c.brightGreen}✔ INSTALLED${c.reset}` : `${c.dim}○ NOT FOUND${c.reset}`;
+    const line = `  ${mark.padEnd(20)} ${c.bold}${item.name.padEnd(28)}${c.reset} ${c.dim}${item.path}${c.reset}`;
+    console.log(`│ ${line.padEnd(76)} │`);
+  });
+  console.log(`╰${'─'.repeat(66)}╯\n`);
+}
+
+function generateQueryMatrix(niche, location) {
+  printBanner();
+  console.log(`${c.bold}Geographic Decomposition for:${c.reset} ${c.brightCyan}${niche}${c.reset} in ${c.brightMagenta}${location}${c.reset}\n`);
+
+  const commonAreas = [
+    'Downtown / City Center',
+    'Commercial Business District',
+    'North Sector / Extension',
+    'South Sector / Ring Road',
+    'East Suburb / Medical Hub',
+    'West Sector / Residential Estate',
+    'Cantonment / Defense Area',
+    'Industrial Zone & IT Corridor',
+  ];
+
+  console.log(`${c.bold}Generated 2-Tier Query Matrix:${c.reset}`);
+  console.log(`╭${'─'.repeat(66)}╮`);
+  console.log(`│ ${c.dim}# Tier 1: Primary Niche × High-Density Sub-Localities${c.reset}`.padEnd(76) + ' │');
+  commonAreas.forEach((area, i) => {
+    const q = `${niche} ${area} ${location}`;
+    console.log(`│   ${c.brightCyan}${i + 1}.${c.reset} ${q}`.padEnd(74) + ' │');
+  });
+  console.log(`│ ${''.padEnd(66)} │`);
+  console.log(`│ ${c.dim}# Tier 2: Broader Terminology × Target City${c.reset}`.padEnd(76) + ' │');
+  console.log(`│   ${c.brightMagenta}9.${c.reset} ${niche} clinic ${location}`.padEnd(74) + ' │');
+  console.log(`│  ${c.brightMagenta}10.${c.reset} best ${niche} ${location}`.padEnd(74) + ' │');
+  console.log(`╰${'─'.repeat(66)}╯\n`);
+  console.log(`${c.dim}Pass these queries into your ScrapeGraphAI pipeline or copy to queries.txt${c.reset}\n`);
+}
+
+// Command Line Argument Parsing
 const rawArgs = process.argv.slice(2);
 let command = 'init';
 let targetDir = process.cwd();
 let isNonInteractive = false;
+let queryNiche = null;
+let queryLoc = null;
 
 for (let i = 0; i < rawArgs.length; i++) {
   const arg = rawArgs[i];
@@ -276,6 +377,12 @@ for (let i = 0; i < rawArgs.length; i++) {
     targetDir = path.resolve(rawArgs[++i] || '.');
   } else if (arg === 'init') {
     command = 'init';
+  } else if (arg === 'status' || arg === 'check') {
+    command = 'status';
+  } else if (arg === 'query' || arg === 'generate') {
+    command = 'query';
+    queryNiche = rawArgs[++i] || 'physiotherapists';
+    queryLoc = rawArgs[++i] || 'Lahore';
   } else if (arg === 'prompt' || arg === '--prompt') {
     command = 'prompt';
   } else if (arg === '--help' || arg === '-h' || arg === 'help') {
@@ -289,26 +396,41 @@ if (!process.stdin.isTTY && command === 'init') {
   isNonInteractive = true;
 }
 
-if (command === 'help') {
-  printBanner();
-  console.log(`Usage:
-  npx google-maps-lead-generation              Interactive setup wizard
-  npx google-maps-lead-generation init         Interactive setup wizard
-  npx google-maps-lead-generation init -y      Automated install for all platforms
-  npx google-maps-lead-generation prompt       Export standalone prompt to ./lead-gen-prompt.md
-  npx google-maps-lead-generation -v           Display version number
-  npx google-maps-lead-generation -h           Display help message
+switch (command) {
+  case 'help':
+    printBanner();
+    console.log(`Usage:
+  ${c.brightCyan}npx google-maps-lead-generation${c.reset}                    Interactive setup wizard
+  ${c.brightCyan}npx google-maps-lead-generation init${c.reset}               Launch setup wizard
+  ${c.brightCyan}npx google-maps-lead-generation init -y${c.reset}            Install all platform adapters silently
+  ${c.brightCyan}npx google-maps-lead-generation status${c.reset}             Audit current workspace adapter status
+  ${c.brightCyan}npx google-maps-lead-generation query <niche> <loc>${c.reset} Generate geographic query matrix
+  ${c.brightCyan}npx google-maps-lead-generation prompt${c.reset}             Export standalone prompt to ./lead-gen-prompt.md
+  ${c.brightCyan}npx google-maps-lead-generation -v${c.reset}                 Display version
+  ${c.brightCyan}npx google-maps-lead-generation -h${c.reset}                 Display this help menu
 `);
-} else if (command === 'prompt') {
-  printBanner();
-  const promptFile = path.join(ROOT_DIR, 'adapters', 'system-prompt', 'prompt.md');
-  const destPrompt = path.join(targetDir, 'lead-gen-prompt.md');
-  fs.copyFileSync(promptFile, destPrompt);
-  console.log(`  ${c.green}✓${c.reset} Exported standalone prompt to: ${c.bold}${destPrompt}${c.reset}`);
-  console.log(`  ${c.dim}Copy and paste into ChatGPT, Claude.ai, or any web LLM instructions.${c.reset}\n`);
-} else if (isNonInteractive) {
-  printBanner();
-  installSkill(targetDir, ['all']);
-} else {
-  promptInteractive(targetDir);
+    break;
+
+  case 'status':
+    showStatus(targetDir);
+    break;
+
+  case 'query':
+    generateQueryMatrix(queryNiche, queryLoc);
+    break;
+
+  case 'prompt':
+    printBanner();
+    exportPrompt(targetDir);
+    break;
+
+  case 'init':
+  default:
+    if (isNonInteractive) {
+      printBanner();
+      installSkill(targetDir, ['all']);
+    } else {
+      promptInteractive(targetDir);
+    }
+    break;
 }

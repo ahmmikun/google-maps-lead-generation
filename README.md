@@ -48,27 +48,35 @@ npx google-maps-lead-generation init
 The interactive installer guides you through configuring your AI editor or platform:
 
 ```text
-Google Maps Lead Generation & Website Opportunity Skill v1.0.0
-Powered by ScrapeGraphAI · Compatible with all Agentic AI IDEs & CLIs
+  ██████╗ ███╗   ███╗ █████╗ ██████╗ ███████╗
+ ██╔════╝ ████╗ ████║██╔══██╗██╔══██╗██╔════╝
+ ██║  ███╗██╔████╔██║███████║██████╔╝███████╗
+ ██║   ██║██║╚██╔╝██║██╔══██║██╔═══╝ ╚════██║
+ ╚██████╔╝██║ ╚═╝ ██║██║  ██║██║     ███████║
+  ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝     ╚══════╝
+  LEAD GENERATION & WEBSITE OPPORTUNITY ENGINE
+  Core Powered by ScrapeGraphAI · v1.0.1
 
-Select your AI platform or IDE: (Use ↑/↓ arrows, Enter to select, or press 1-7)
+Select your AI coding assistant or editor: (Use ↑/↓, Enter to select, or press 1-8)
 
-  ● [1] All Platforms (Claude, Antigravity, Cursor, Windsurf, Copilot, Gemini) - [Recommended]
-    [2] Claude Code CLI (CLAUDE.md)
-    [3] Google Antigravity & Gemini CLI (AGENTS.md & GEMINI.md)
-    [4] Cursor IDE (.cursorrules & .cursor/rules/*.mdc)
-    [5] Windsurf IDE (.windsurfrules)
-    [6] VS Code / GitHub Copilot (.github/copilot-instructions.md)
-    [7] Export Standalone Prompt for Web LLMs (ChatGPT, Claude.ai)
+  ❯ [1] 🚀 All Platforms (Claude, Antigravity, Cursor, Windsurf, Copilot, Gemini)
+    [2] 🤖 Claude Code CLI (CLAUDE.md)
+    [3] 🪐 Google Antigravity & Gemini CLI (AGENTS.md & GEMINI.md)
+    [4] ⚡ Cursor IDE (.cursorrules & .cursor/rules/*.mdc)
+    [5] 🌊 Windsurf Cascade (.windsurfrules)
+    [6] 🐙 VS Code / GitHub Copilot (.github/copilot-instructions.md)
+    [7] 🦾 Cline / Roo Code (.clinerules)
+    [8] 💬 Export Standalone System Prompt for ChatGPT / Claude.ai
 ```
 
 ### CLI Command Options
 
 | Command | Action |
 |:---|:---|
-| `npx google-maps-lead-generation` | Launch interactive platform installer |
-| `npx google-maps-lead-generation init` | Launch interactive setup wizard |
+| `npx google-maps-lead-generation` | Launch interactive setup wizard |
 | `npx google-maps-lead-generation init -y` | Auto-install adapters for all IDEs silently (CI-ready) |
+| `npx google-maps-lead-generation status` | Audit current workspace AI adapter status |
+| `npx google-maps-lead-generation query <niche> <loc>` | Generate instant 2-tier geographic query matrix |
 | `npx google-maps-lead-generation prompt` | Export standalone prompt to `./lead-gen-prompt.md` |
 | `npx google-maps-lead-generation -v` | Display version number |
 | `npx google-maps-lead-generation -h` | Display help message |

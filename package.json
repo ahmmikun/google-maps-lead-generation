@@ -1,6 +1,6 @@
 {
   "name": "google-maps-lead-generation",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Google Maps lead generation & website opportunity discovery skill powered by ScrapeGraphAI for all AI coding agents.",
   "main": "bin/cli.js",
   "bin": {
